@@ -1,9 +1,17 @@
 <% include partials/header %>
-
+<%
+var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+%>
 <div class="container">
   <div id="posts-page">
     <h1 class="text-center">Adventure Posts</h1>
     <% posts.forEach(function(post){ %>
+      <%
+      var post_d = post.timeCreated.getDate();
+      var post_m = monthNames[post.timeCreated.getMonth()];
+      var post_y = post.timeCreated.getFullYear();
+
+      %>
       <a href="/posts/<%= post._id %>">
         <div class="adventure-post">
           <div class="row">
@@ -22,7 +30,8 @@
                 <% } %>
               </p>
               <p>
-                <small class="text-muted">Posted by <%= post.author.username %></small>
+                <small class="post-author text-muted">Posted by <%= post.author.username %></small>
+                <small class="post-date text-muted"><%= post_m + ' ' + post_d + ' ' + post_y %></small>
               </p>
             </div>
           </div>

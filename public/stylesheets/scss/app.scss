@@ -78,6 +78,7 @@ hr {
       box-shadow: 0 0 2px #000;
       color: #000;
       position: relative;
+      transition: all 0.2s;
       h5 {
         margin: 10px 10px;
       }
@@ -87,8 +88,17 @@ hr {
       }
       small {
         position: absolute;
-        bottom: 5px;
-        right: 30px;
+        &.post-author {
+          bottom: 5px;
+          right: 30px;
+        }
+        &.post-date {
+          top: 5px;
+          right: 30px;
+        }
+      }
+      &:hover {
+        transform: scale(1.005, 1.005);
       }
     }
   }
@@ -212,6 +222,7 @@ hr {
     overflow-x: hidden;
     position: relative;
     color: #000;
+    transition: all 0.2s;
     h5 {
       margin: 10px 10px;
     }
@@ -221,8 +232,17 @@ hr {
     }
     small {
       position: absolute;
-      bottom: 5px;
-      right: 30px;
+      &.post-author {
+        bottom: 5px;
+        right: 30px;
+      }
+      &.post-date {
+        top: 5px;
+        right: 30px;
+      }
+    }
+    &:hover {
+      transform: scale(1.005, 1.005);
     }
   }
 }
@@ -442,6 +462,7 @@ hr {
       overflow-x: hidden;
       position: relative;
       color: #000;
+      transition: all 0.2s;
       h5 {
         margin: 10px 5px;
       }
@@ -451,8 +472,17 @@ hr {
       }
       small {
         position: absolute;
-        bottom: 5px;
-        right: 30px;
+        &.post-author {
+          bottom: 5px;
+          right: 30px;
+        }
+        &.post-date {
+          top: 5px;
+          right: 30px;
+        }
+      }
+      &:hover {
+        transform: scale(1.005, 1.005);
       }
     }
 }
@@ -556,10 +586,6 @@ hr {
     }
     .adventure-post  {
       padding: 0 0 20px !important;
-      .col-lg-5 {
-        padding: 0;
-        margin-bottom: 8px;
-        }
     }
   }
   #posts-page {
@@ -606,10 +632,6 @@ hr {
     }
     .adventure-post {
       margin: 20px 0;
-      padding: 0 5px;
-      .col-sm-4 {
-        padding: 0;
-      }
     }
   }
   

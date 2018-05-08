@@ -1,4 +1,12 @@
 <% include partials/header %>
+<%
+var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+var user_d = adventurer.timeCreated.getDate();
+var user_m = monthNames[adventurer.timeCreated.getMonth()];
+var user_y = adventurer.timeCreated.getFullYear();
+
+%>
 <div class="container adventurer-container">
   <div id="user-profile">
     <div class="user-banner">
@@ -7,7 +15,7 @@
       <div class="user-info">
         <span><b>Name:</b> <%= adventurer.username %></span>
         <span><b>Country:</b> Philippines</span>
-        <span><b>Member since:</b> March 2018</span>
+        <span><b>Member since:</b> <%= user_m + ' ' + user_d + ' ' + user_y %></span>
         <span><b>Followers:</b> 1 million</span>
       </div>
       <div class="change-image">
@@ -33,6 +41,12 @@
     <h1 class="text-center">Adventurer's Posts</h1>
     <hr>
     <% adventurer.posts.forEach(function(post){ %>
+    <%
+     var post_d = post.timeCreated.getDate();
+     var post_m = monthNames[post.timeCreated.getMonth()];
+     var post_y = post.timeCreated.getFullYear();
+
+    %>
     <a href="/posts/<%= post._id %>">
       <div class="adventure-post">
         <div class="row">
@@ -51,9 +65,10 @@
                   <% } %>
             </p>
             <p>
-              <small class="text-muted">Posted by
+              <small class="post-author text-muted">Posted by
                 <%= post.author.username %>
               </small>
+              <small class="post-date text-muted"><%= post_m + ' ' + post_d + ' ' + post_y %></small>
             </p>
           </div>
         </div>

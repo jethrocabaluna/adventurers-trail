@@ -1,5 +1,12 @@
 <% include partials/header %>
+<%
+var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+var post_d = post.timeCreated.getDate();
+var post_m = monthNames[post.timeCreated.getMonth()];
+var post_y = post.timeCreated.getFullYear();
+
+%>
 <div class="container showpost-container">
   <div id="showpost-page">
     <div class="card mb-3">
@@ -15,7 +22,7 @@
               </small>
             </p>
             <p class="card-text">
-              <small class="text-muted">March 10, 2018</small>
+              <small class="text-muted"><%= post_m + ' ' + post_d + ' ' + post_y %></small>
             </p>
           </div>
           <div class="col">

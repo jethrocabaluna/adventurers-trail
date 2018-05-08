@@ -68,16 +68,27 @@ hr {
     -webkit-box-shadow: 0 0 2px #000;
     box-shadow: 0 0 2px #000;
     color: #000;
-    position: relative; }
+    position: relative;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s; }
     #main-content #list-recent .adventure-post h5 {
       margin: 10px 10px; }
     #main-content #list-recent .adventure-post p {
       margin: 0;
       padding: 10px 15px; }
     #main-content #list-recent .adventure-post small {
-      position: absolute;
-      bottom: 5px;
-      right: 30px; }
+      position: absolute; }
+      #main-content #list-recent .adventure-post small.post-author {
+        bottom: 5px;
+        right: 30px; }
+      #main-content #list-recent .adventure-post small.post-date {
+        top: 5px;
+        right: 30px; }
+    #main-content #list-recent .adventure-post:hover {
+      -webkit-transform: scale(1.005, 1.005);
+      -ms-transform: scale(1.005, 1.005);
+      transform: scale(1.005, 1.005); }
   #main-content #list-adventurers .adventurer {
     width: 260px;
     margin: 5px auto;
@@ -182,16 +193,27 @@ hr {
     box-shadow: 0 0 2px #333;
     overflow-x: hidden;
     position: relative;
-    color: #000; }
+    color: #000;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s; }
     #posts-page .adventure-post h5 {
       margin: 10px 10px; }
     #posts-page .adventure-post p {
       margin: 0;
       padding: 10px 15px; }
     #posts-page .adventure-post small {
-      position: absolute;
-      bottom: 5px;
-      right: 30px; }
+      position: absolute; }
+      #posts-page .adventure-post small.post-author {
+        bottom: 5px;
+        right: 30px; }
+      #posts-page .adventure-post small.post-date {
+        top: 5px;
+        right: 30px; }
+    #posts-page .adventure-post:hover {
+      -webkit-transform: scale(1.005, 1.005);
+      -ms-transform: scale(1.005, 1.005);
+      transform: scale(1.005, 1.005); }
 
 #showpost-page {
   margin: 20px auto 50px;
@@ -380,16 +402,27 @@ hr {
     box-shadow: 0 0 2px #333;
     overflow-x: hidden;
     position: relative;
-    color: #000; }
+    color: #000;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s; }
     #user-profile .adventure-post h5 {
       margin: 10px 5px; }
     #user-profile .adventure-post p {
       margin: 0;
       padding: 10px 15px; }
     #user-profile .adventure-post small {
-      position: absolute;
-      bottom: 5px;
-      right: 30px; }
+      position: absolute; }
+      #user-profile .adventure-post small.post-author {
+        bottom: 5px;
+        right: 30px; }
+      #user-profile .adventure-post small.post-date {
+        top: 5px;
+        right: 30px; }
+    #user-profile .adventure-post:hover {
+      -webkit-transform: scale(1.005, 1.005);
+      -ms-transform: scale(1.005, 1.005);
+      transform: scale(1.005, 1.005); }
 
 .pagination {
   margin: 10px;
@@ -482,9 +515,6 @@ hr {
       letter-spacing: 5px; }
     #main-content .adventure-post {
       padding: 0 0 20px !important; }
-      #main-content .adventure-post .col-lg-5 {
-        padding: 0;
-        margin-bottom: 8px; }
   #posts-page h1 {
     font-size: 1rem;
     letter-spacing: 5px; }
@@ -513,10 +543,7 @@ hr {
         #user-profile .user-banner .user-info span {
           font-size: 1rem !important; }
     #user-profile .adventure-post {
-      margin: 20px 0;
-      padding: 0 5px; }
-      #user-profile .adventure-post .col-sm-4 {
-        padding: 0; }
+      margin: 20px 0; }
   .adventurer-container, .showpost-container, .container {
     width: 100%;
     padding: 0; }
