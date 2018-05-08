@@ -23,7 +23,9 @@ const   Comment = require("./models/comment"),
         User    = require("./models/user"),
         Post    = require("./models/post");
 
-mongoose.connect("mongodb://localhost/adventurers_trail");
+
+// mongoose.connect("mongodb://localhost/adventurers_trail");
+mongoose.connect("mongodb://jethrocabaluna:jethrodatabase@ds219100.mlab.com:19100/adventurers_trail");
 app.set("view engine", "ejs");
 
 // MIDDLEWARE CONFIGURATION

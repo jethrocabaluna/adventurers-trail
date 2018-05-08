@@ -13,7 +13,8 @@ const Account = require("../models/account"),
 const middleware = require("../middleware");
 // --------------- inits ---------------//
 const router  = express.Router(),
-      conn    = mongoose.createConnection("mongodb://localhost/adventurers_trail");
+      // conn    = mongoose.createConnection("mongodb://localhost/adventurers_trail");
+      conn = mongoose.createConnection("mongodb://jethrocabaluna:jethrodatabase@ds219100.mlab.com:19100/adventurers_trail");
 // --------------- Init gfs ----------------//
 let gfs;
 conn.once('open', () => {
@@ -24,7 +25,8 @@ conn.once('open', () => {
 // --------------- Create storage engine -------------//
 let filename = "";
 const storage = new GridFsStorage({
-  url: 'mongodb://localhost/adventurers_trail',
+  // url: 'mongodb://localhost/adventurers_trail',
+  url: 'mongodb://jethrocabaluna:jethrodatabase@ds219100.mlab.com:19100/adventurers_trail',
   file: (req, file) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {
