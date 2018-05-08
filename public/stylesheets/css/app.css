@@ -532,9 +532,11 @@ hr {
     padding: 0; }
     #posts-page .adventure-post .col-md-7 {
       padding: 20px 40px; }
-  #adventurers-page h1 {
-    font-size: 2rem;
-    letter-spacing: 5px; }
+  #adventurers-page {
+    overflow-x: hidden; }
+    #adventurers-page h1 {
+      font-size: 2rem;
+      letter-spacing: 5px; }
   #user-profile {
     margin-top: 0; }
     #user-profile h1 {
