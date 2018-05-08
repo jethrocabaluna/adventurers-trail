@@ -153,29 +153,30 @@ hr {
           background-color: #9535e4;
           color: #fff; }
   #main-content #list-adventurers .bg-img {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    width: 100%;
     height: 100%;
-    opacity: 0.2;
+    opacity: 0.4;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     transition: all 0.6s; }
+    #main-content #list-adventurers .bg-img img {
+      height: 100%;
+      width: 100%; }
   #main-content #list-adventurers .prof-img {
     position: absolute;
-    top: 20px;
-    left: 15%;
-    height: 230px;
-    width: 70%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    top: 30px;
+    left: 30px;
+    height: 200px;
+    width: 200px;
     -webkit-box-shadow: 0px 0px 10px #000;
     box-shadow: 0px 0px 10px #000;
     border-radius: 5px;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     transition: all 0.6s; }
+    #main-content #list-adventurers .prof-img img {
+      height: 100%;
+      width: 100%; }
 
 #posts-page {
   margin-bottom: 100px; }
@@ -249,27 +250,31 @@ hr {
     #adventurers-page .adventurer:hover .info span, #adventurers-page .adventurer:hover .info p {
       opacity: 0;
       cursor: default; }
-    #adventurers-page .adventurer:hover .follow, #adventurers-page .adventurer:hover .more-info {
-      background-color: #000; }
-    #adventurers-page .adventurer .bg-img, #adventurers-page .adventurer .prof-img {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    #adventurers-page .adventurer .bg-img {
+      width: 100%;
+      height: 100%;
+      opacity: 0.4;
       -webkit-transition: all 0.6s;
       -o-transition: all 0.6s;
       transition: all 0.6s; }
-    #adventurers-page .adventurer .bg-img {
-      height: 100%;
-      opacity: 0.2; }
+      #adventurers-page .adventurer .bg-img img {
+        height: 100%;
+        width: 100%; }
     #adventurers-page .adventurer .prof-img {
       position: absolute;
-      top: 20px;
-      left: 15%;
-      height: 230px;
-      width: 70%;
+      top: 30px;
+      left: 30px;
+      height: 200px;
+      width: 200px;
       -webkit-box-shadow: 0px 0px 10px #000;
       box-shadow: 0px 0px 10px #000;
-      border-radius: 5px; }
+      border-radius: 5px;
+      -webkit-transition: all 0.6s;
+      -o-transition: all 0.6s;
+      transition: all 0.6s; }
+      #adventurers-page .adventurer .prof-img img {
+        height: 100%;
+        width: 100%; }
     #adventurers-page .adventurer .info {
       position: absolute;
       bottom: 10px;

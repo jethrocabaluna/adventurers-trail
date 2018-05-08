@@ -180,26 +180,29 @@ hr {
     }
 
     .bg-img {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      width: 100%;
       height: 100%;
-      opacity: 0.2;
+      opacity: 0.4;
       transition: all 0.6s;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
 
     .prof-img {
       position: absolute;
-      top: 20px;
-      left: 15%;
-      height: 230px;
-      width: 70%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      top: 30px;
+      left: 30px;
+      height: 200px;
+      width: 200px;
       box-shadow: 0px 0px 10px #000;
       border-radius: 5px;
       transition: all 0.6s;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
 }
@@ -289,30 +292,32 @@ hr {
           cursor: default;
         }
       }
-      .follow, .more-info {
-        background-color: #000;
-      }
     }
 
-    .bg-img, .prof-img {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: all 0.6s;
-    }
     .bg-img {
+      width: 100%;
       height: 100%;
-      opacity: 0.2;
+      opacity: 0.4;
+      transition: all 0.6s;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
 
     .prof-img {
       position: absolute;
-      top: 20px;
-      left: 15%;
-      height: 230px;
-      width: 70%;
+      top: 30px;
+      left: 30px;
+      height: 200px;
+      width: 200px;
       box-shadow: 0px 0px 10px #000;
       border-radius: 5px;
+      transition: all 0.6s;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
     .info {
       position: absolute;
