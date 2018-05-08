@@ -52,15 +52,15 @@ body{
     background-image: url("../../img/slider1.jpg");
   }
   .slideshow li:nth-child(2) { 
-    background-image: url("../../img/slider2.jpg");
+    background-image: url("../../img/slider2.jpeg");
     animation-delay: 10s; 
   }
   .slideshow li:nth-child(3) { 
-    background-image: url("../../img/slider3.jpg");
+    background-image: url("../../img/slider3.jpeg");
     animation-delay: 20s; 
   }
   .slideshow li:nth-child(4) { 
-    background-image: url("../../img/slider4.jpg");
+    background-image: url("../../img/slider4.jpeg");
     animation-delay: 30s; 
   }
   .slideshow li:nth-child(5) { 
