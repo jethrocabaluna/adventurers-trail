@@ -1,0 +1,30 @@
+<% include partials/header %>
+
+<div class="container account-container">
+  <h1 class="text-center">Sign Up</h1>
+  <hr>
+  <form class="account-form" action="/signup" method="POST">
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" name="firstname" placeholder="First name" required="true">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" name="lastname" placeholder="Last name" required="true">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" name="username" placeholder="Username" required="true">
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-control" name="email" placeholder="Email" required="true">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" name="password" placeholder="Password" required="true">
+    </div>
+    <button style="display: block;" type="submit" class="btn btn-primary mx-auto">Register</button>
+  </form>
+</div>
+
+<% include partials/footer %>

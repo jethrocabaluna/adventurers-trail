@@ -1,0 +1,66 @@
+<% include partials/header %>
+<div class="container adventurer-container">
+  <div id="user-profile">
+    <div class="user-banner">
+      <a href="image/<%= coverImage %>"><img src="image/<%= coverImage %>" class="show-user-banner" alt="<%= adventurer.username %>"></a>
+      <a href="image/<%= profileImage %>"><img src="image/<%= profileImage %>" class="show-user-img img-fluid rounded mx-auto d-block" alt="<%= adventurer.username %>"></a>
+      <div class="user-info">
+        <span><b>Name:</b> <%= adventurer.username %></span>
+        <span><b>Country:</b> Philippines</span>
+        <span><b>Member since:</b> March 2018</span>
+        <span><b>Followers:</b> 1 million</span>
+      </div>
+      <div class="change-image">
+        <button id="edit-button">Edit</button>
+        <div class="image-form">
+          <form action="/adventurers/<%= adventurer._id %>/profile_image" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="prof-img-input">Change Profile Photo</label>
+              <input type="file" class="form-control-file" name="image" id="prof-img-input" required>
+            </div>
+            <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
+          </form>
+          <form action="/adventurers/<%= adventurer._id %>/cover_image" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="cover-img-input">Change Cover Photo</label>
+              <input type="file" class="form-control-file" name="image" id="cover-img-input" required>
+            </div>
+            <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <h1 class="text-center">Adventurer's Posts</h1>
+    <hr>
+    <% adventurer.posts.forEach(function(post){ %>
+    <a href="/posts/<%= post._id %>">
+      <div class="adventure-post">
+        <div class="row">
+          <div class="col-xl-3 col-lg-4 col-md-5 padding-0">
+            <img src="<%= post.image %>" class="img-fluid" alt="Responsive image">
+          </div>
+          <div class="col-xl-9 col-lg-8 col-md-7 padding-0">
+            <h5>
+              <%= post.title %>
+            </h5>
+            <p>
+              <%- post.description.substring(0, 200) %>
+                <!-- truncate long posts on blogs page -->
+                <% if(post.description.length > 200){ %>
+                  ...
+                  <% } %>
+            </p>
+            <p>
+              <small class="text-muted">Posted by
+                <%= post.author.username %>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </a>
+    <% }); %>
+  </div>
+</div>
+
+<% include partials/footer %>

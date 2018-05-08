@@ -1,0 +1,630 @@
+html{
+  height: 100%;
+  overflow-x: hidden;
+}
+body{
+  background-color: #fafafa;
+  min-height: 100%;
+  padding-bottom: 30px;
+  position: relative;
+}
+.footer{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #101010;
+  letter-spacing: 3px;
+  font-weight: 100;
+}
+.alert {
+  margin: 0;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 15px;
+}
+
+.account-container.container {
+  width: 60%;
+  min-width: 320px;
+}
+
+#main-content {
+  margin: 20px 0 50px;
+  h1 {
+    text-align: center;
+    letter-spacing: 10px;
+    font-weight: 400;
+    margin: 20px 0;
+  }
+  .see-all-posts {
+    margin-left: 20px;
+  }
+  .home-selections {
+    box-shadow: 0 0 2px #000;
+    .list-group-item {
+      border-radius: 0;
+    }
+    .list-group-item.active {
+      background-color: #666;
+      border: none;
+    }
+    .img-container {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  #list-recent {
+    a {
+      text-decoration: none;
+    }
+    .adventure-post {
+      background-color: #fff;
+      margin: 20px 0;
+      padding: 0;
+      box-shadow: 0 0 2px #000;
+      color: #000;
+      position: relative;
+      h5 {
+        margin: 10px 10px;
+      }
+      p {
+        margin: 0;
+        padding: 10px 15px;
+      }
+      small {
+        position: absolute;
+        bottom: 5px;
+        right: 30px;
+      }
+    }
+  }
+  #list-adventurers {
+    .adventurer {
+      width: 260px;
+      margin: 5px auto;
+      position: relative;
+      height: 430px;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0px 0px 5px #666;
+      &:hover {
+        .bg-img {
+          opacity: 1;
+        }
+        .prof-img {
+          opacity: 0.8;
+          left: 5%;
+          top: 5px;
+          height: 50px;
+          min-height: 50px;
+          width: 50px;
+        }
+        .info {
+          span, p {
+            opacity: 0;
+            cursor: default;
+          }
+        }
+      }
+      .info {
+        position: absolute;
+        bottom: 10px;
+        color: #000;
+
+        span {
+          font-size: 1.2rem;
+          transition: all 0.6s;
+        }
+
+        p {
+          margin: 10px 10px;
+          font-size: 0.9rem;
+          line-height: 1.2rem;
+          transition: all 0.6s;
+        }
+
+        button {
+          background-color: rgba(0,0,0,0);
+          padding: 5px;
+          color: #Fff;
+          border-radius: 5px;
+          cursor: pointer;
+          margin: 5px;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          transition: all 0.2s;
+          outline: none;
+          font-size: 0.8rem;
+        }
+        .follow {
+          border-color: rgb(216, 48, 48);
+          color: rgb(216, 48, 48);
+          &:hover {
+            background-color: rgb(216, 48, 48);
+            color: #fff;
+          }
+        }
+        .more-info {
+          border-color: rgb(149, 53, 228);
+          color: rgb(149, 53, 228);
+          &:hover {
+            background-color: rgb(149, 53, 228);
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .bg-img {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100%;
+      opacity: 0.2;
+      transition: all 0.6s;
+    }
+
+    .prof-img {
+      position: absolute;
+      top: 20px;
+      left: 15%;
+      height: 230px;
+      width: 70%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0px 0px 10px #000;
+      border-radius: 5px;
+      transition: all 0.6s;
+    }
+  }
+}
+
+#posts-page {
+  margin-bottom: 100px;
+  a {
+    text-decoration: none;
+  }
+  h1 {
+    font-weight: 400;
+    letter-spacing: 10px;
+    margin: 20px;
+  }
+  .adventure-post {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 0;
+    box-shadow: 0 0 2px #333;
+    overflow-x: hidden;
+    position: relative;
+    color: #000;
+    h5 {
+      margin: 10px 10px;
+    }
+    p {
+      margin: 0;
+      padding: 10px 15px;
+    }
+    small {
+      position: absolute;
+      bottom: 5px;
+      right: 30px;
+    }
+  }
+}
+
+#showpost-page {
+  margin: 20px auto 50px;
+  width: 80%;
+  
+}
+
+#adventurers-page {
+  margin-bottom: 100px;
+  h1 {
+    font-weight: 400;
+    letter-spacing: 10px;
+    margin: 20px;
+  }
+  .adventurer {
+    width: 260px;
+    margin: 5px auto;
+    position: relative;
+    height: 430px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px #666;
+    &:hover {
+      .bg-img {
+        opacity: 1;
+      }
+      .prof-img {
+        opacity: 0.8;
+        left: 5%;
+        top: 5px;
+        height: 50px;
+        min-height: 50px;
+        width: 50px;
+      }
+      .info {
+        span, p {
+          opacity: 0;
+          cursor: default;
+        }
+      }
+    }
+
+    .bg-img, .prof-img {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: all 0.6s;
+    }
+    .bg-img {
+      height: 100%;
+      opacity: 0.2;
+    }
+
+    .prof-img {
+      position: absolute;
+      top: 20px;
+      left: 15%;
+      height: 230px;
+      width: 70%;
+      box-shadow: 0px 0px 10px #000;
+      border-radius: 5px;
+    }
+    .info {
+      position: absolute;
+      bottom: 10px;
+      color: #000;
+
+      span {
+        font-size: 1.2rem;
+        transition: all 0.6s;
+      }
+
+      p {
+        margin: 10px 10px;
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+        transition: all 0.6s;
+      }
+
+      button {
+        background-color: rgba(0,0,0,0);
+        padding: 5px;
+        color: #Fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        transition: all 0.2s;
+        outline: none;
+        font-size: 0.8rem;
+      }
+      .follow {
+        border-color: rgb(216, 48, 48);
+        color: rgb(216, 48, 48);
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+          background-color: rgb(216, 48, 48);
+          color: #fff;
+        }
+      }
+      .more-info {
+        border-color: rgb(149, 53, 228);
+        color: rgb(149, 53, 228);
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+          background-color: rgb(149, 53, 228);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+#user-profile {
+  margin: 0 0 60px;
+  background-color: #fff;
+  box-shadow: 0 0 20px #000;
+  padding-bottom: 50px;
+  a {
+    text-decoration: none;
+  }
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 10px;
+    font-weight: 100;
+    margin: 20px 0;
+    border-top: 0.5px dashed #000;
+    padding-top: 30px;
+  }
+  .user-banner {
+    margin-bottom: 270px;
+    background-color: #101010;
+    position: relative;
+    height: 50vh;
+    .show-user-banner {
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+    }
+    .show-user-img {
+      width: 300px;
+      height: 230px;
+      position: absolute;
+      bottom: -200px;
+      left: 0;
+      right: 0;
+      box-shadow: 0 0 10px #000;
+      background-color: #fff;
+      transition: all 0.6s;
+    }
+    .user-info {
+      position: absolute;
+      bottom: -160px;
+      left: 40px;
+      span {
+        display: block;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        color: #999;
+        b {
+          color: #000;
+        }
+      }
+    }
+    .change-image {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+      .form-group {
+        margin-bottom: 5px;
+      }
+      button {
+        background-color: rgba(0,0,0,0.4);
+        border: none;
+        border-radius: 5px;
+        color: rgb(241, 241, 241);
+        outline: none;
+        cursor: pointer;
+        font-weight: 800;
+      }
+      .image-form {
+        display: none;
+        width: 280px;
+        padding: 20px 20px;
+        .apply {
+          background-color: rgb(66, 31, 31);
+          font-size: 0.8rem;
+          margin-bottom: 10px;
+        }
+        label {
+          font-weight: 800;
+        }
+        input {
+          font-size: 0.8rem;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  .adventure-post {
+      background-color: #fff;
+      margin: 20px 0;
+      padding: 0;
+      box-shadow: 0 0 2px #333;
+      overflow-x: hidden;
+      position: relative;
+      color: #000;
+      h5 {
+        margin: 10px 5px;
+      }
+      p {
+        margin: 0;
+        padding: 10px 15px;
+      }
+      small {
+        position: absolute;
+        bottom: 5px;
+        right: 30px;
+      }
+    }
+}
+
+.pagination {
+    margin: 10px;
+    float: left;
+    button {
+      display: inline-block;
+      margin: 0;
+      padding: 5px 20px;
+      font-size: 0.8rem;
+      outline: none;
+      border: 1px solid #000;
+      background-color: #fff;
+      cursor: pointer;
+      &.active {
+        background-color: #e1e1e1;
+      }
+    }
+}
+
+/* Navbar scroll fade */
+.navbar {
+  background-color: #333;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out;
+  a {
+    color: #fff;
+  }
+  button {
+    outline: none;
+  }
+  .fa-bars {
+    color: #fff;
+  }
+}
+.navbar.scrolled {
+    background: rgb(68, 68, 68); /* IE */
+    background: rgba(0, 0, 0, 0.6); /* NON-IE */
+}
+
+@keyframes imageAnimation { 
+0% { 
+  opacity: 0; 
+  animation-timing-function: ease-in;
+}
+10% {
+  opacity: 1;
+  animation-timing-function: ease-out;
+}
+20% {
+  opacity: 1;
+}
+30% {
+  opacity: 0
+}
+}
+@media(max-width: 1024px) {
+  #user-profile {
+    .user-banner {
+      .show-user-img {
+        left: auto;
+        right: 10px;
+      }
+    }
+  }
+}
+@media(max-width: 767px) {
+  #main-content {
+    h1 {
+      font-size: 1.5rem;
+    }
+    .img-container {
+      display: none;
+    }
+  }
+  #user-profile {
+    .user-banner {
+      margin-bottom: 330px;
+      .show-user-img {
+        left: 0;
+        right: 0;
+      }
+      .user-info {
+        bottom: -320px;
+        left: 50px;
+      }
+    }
+  }
+}
+@media(max-width: 500px) {
+  #main-content {
+    overflow-x: hidden;
+    h1 {
+      font-size: 1rem;
+      letter-spacing: 5px;
+    }
+    .adventure-post  {
+      padding: 0 0 20px !important;
+      .col-lg-5 {
+        padding: 0;
+        margin-bottom: 8px;
+        }
+    }
+  }
+  #posts-page {
+    h1 {
+      font-size: 1rem;
+      letter-spacing: 5px;
+    }
+    .adventure-post  {
+      padding: 0;
+      .col-md-7 {
+        padding: 20px 40px;
+      }
+    }
+  }
+
+  #adventurers-page {
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 5px;
+    }
+  }
+
+  #user-profile {
+    margin-top: 0;
+    h1 {
+      font-size: 1rem;
+      letter-spacing: 5px;
+    }
+    .user-banner {
+      height: 35vh;
+      margin-bottom: 350px !important;
+      .show-user-img {
+        width: 60% !important;
+        min-width: 250px;
+        bottom: -210px !important;
+      }
+      .user-info {
+        bottom: -320px !important;
+        left: 10px !important;
+        span {
+          font-size: 1rem !important;
+        }
+      }
+    }
+    .adventure-post {
+      margin: 20px 0;
+      padding: 0 5px;
+      .col-sm-4 {
+        padding: 0;
+      }
+    }
+  }
+  
+  .adventurer-container, .showpost-container, .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  #showpost-page {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}

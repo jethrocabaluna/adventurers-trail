@@ -1,0 +1,529 @@
+html {
+  height: 100%;
+  overflow-x: hidden; }
+
+body {
+  background-color: #fafafa;
+  min-height: 100%;
+  padding-bottom: 30px;
+  position: relative; }
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #101010;
+  letter-spacing: 3px;
+  font-weight: 100; }
+
+.alert {
+  margin: 0; }
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(rgba(0, 0, 0, 0.75)), to(transparent));
+  background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, 0.75), transparent);
+  background-image: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.75), transparent); }
+
+.container {
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 15px; }
+
+.account-container.container {
+  width: 60%;
+  min-width: 320px; }
+
+#main-content {
+  margin: 20px 0 50px; }
+  #main-content h1 {
+    text-align: center;
+    letter-spacing: 10px;
+    font-weight: 400;
+    margin: 20px 0; }
+  #main-content .see-all-posts {
+    margin-left: 20px; }
+  #main-content .home-selections {
+    -webkit-box-shadow: 0 0 2px #000;
+    box-shadow: 0 0 2px #000; }
+    #main-content .home-selections .list-group-item {
+      border-radius: 0; }
+    #main-content .home-selections .list-group-item.active {
+      background-color: #666;
+      border: none; }
+    #main-content .home-selections .img-container img {
+      width: 100%; }
+  #main-content #list-recent a {
+    text-decoration: none; }
+  #main-content #list-recent .adventure-post {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 0;
+    -webkit-box-shadow: 0 0 2px #000;
+    box-shadow: 0 0 2px #000;
+    color: #000;
+    position: relative; }
+    #main-content #list-recent .adventure-post h5 {
+      margin: 10px 10px; }
+    #main-content #list-recent .adventure-post p {
+      margin: 0;
+      padding: 10px 15px; }
+    #main-content #list-recent .adventure-post small {
+      position: absolute;
+      bottom: 5px;
+      right: 30px; }
+  #main-content #list-adventurers .adventurer {
+    width: 260px;
+    margin: 5px auto;
+    position: relative;
+    height: 430px;
+    text-align: center;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 5px #666;
+    box-shadow: 0px 0px 5px #666; }
+    #main-content #list-adventurers .adventurer:hover .bg-img {
+      opacity: 1; }
+    #main-content #list-adventurers .adventurer:hover .prof-img {
+      opacity: 0.8;
+      left: 5%;
+      top: 5px;
+      height: 50px;
+      min-height: 50px;
+      width: 50px; }
+    #main-content #list-adventurers .adventurer:hover .info span, #main-content #list-adventurers .adventurer:hover .info p {
+      opacity: 0;
+      cursor: default; }
+    #main-content #list-adventurers .adventurer .info {
+      position: absolute;
+      bottom: 10px;
+      color: #000; }
+      #main-content #list-adventurers .adventurer .info span {
+        font-size: 1.2rem;
+        -webkit-transition: all 0.6s;
+        -o-transition: all 0.6s;
+        transition: all 0.6s; }
+      #main-content #list-adventurers .adventurer .info p {
+        margin: 10px 10px;
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+        -webkit-transition: all 0.6s;
+        -o-transition: all 0.6s;
+        transition: all 0.6s; }
+      #main-content #list-adventurers .adventurer .info button {
+        background-color: transparent;
+        padding: 5px;
+        color: #Fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        outline: none;
+        font-size: 0.8rem; }
+      #main-content #list-adventurers .adventurer .info .follow {
+        border-color: #d83030;
+        color: #d83030; }
+        #main-content #list-adventurers .adventurer .info .follow:hover {
+          background-color: #d83030;
+          color: #fff; }
+      #main-content #list-adventurers .adventurer .info .more-info {
+        border-color: #9535e4;
+        color: #9535e4; }
+        #main-content #list-adventurers .adventurer .info .more-info:hover {
+          background-color: #9535e4;
+          color: #fff; }
+  #main-content #list-adventurers .bg-img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    opacity: 0.2;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s; }
+  #main-content #list-adventurers .prof-img {
+    position: absolute;
+    top: 20px;
+    left: 15%;
+    height: 230px;
+    width: 70%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-box-shadow: 0px 0px 10px #000;
+    box-shadow: 0px 0px 10px #000;
+    border-radius: 5px;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s; }
+
+#posts-page {
+  margin-bottom: 100px; }
+  #posts-page a {
+    text-decoration: none; }
+  #posts-page h1 {
+    font-weight: 400;
+    letter-spacing: 10px;
+    margin: 20px; }
+  #posts-page .adventure-post {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 0;
+    -webkit-box-shadow: 0 0 2px #333;
+    box-shadow: 0 0 2px #333;
+    overflow-x: hidden;
+    position: relative;
+    color: #000; }
+    #posts-page .adventure-post h5 {
+      margin: 10px 10px; }
+    #posts-page .adventure-post p {
+      margin: 0;
+      padding: 10px 15px; }
+    #posts-page .adventure-post small {
+      position: absolute;
+      bottom: 5px;
+      right: 30px; }
+
+#showpost-page {
+  margin: 20px auto 50px;
+  width: 80%; }
+
+#adventurers-page {
+  margin-bottom: 100px; }
+  #adventurers-page h1 {
+    font-weight: 400;
+    letter-spacing: 10px;
+    margin: 20px; }
+  #adventurers-page .adventurer {
+    width: 260px;
+    margin: 5px auto;
+    position: relative;
+    height: 430px;
+    text-align: center;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 5px #666;
+    box-shadow: 0px 0px 5px #666; }
+    #adventurers-page .adventurer:hover .bg-img {
+      opacity: 1; }
+    #adventurers-page .adventurer:hover .prof-img {
+      opacity: 0.8;
+      left: 5%;
+      top: 5px;
+      height: 50px;
+      min-height: 50px;
+      width: 50px; }
+    #adventurers-page .adventurer:hover .info span, #adventurers-page .adventurer:hover .info p {
+      opacity: 0;
+      cursor: default; }
+    #adventurers-page .adventurer .bg-img, #adventurers-page .adventurer .prof-img {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-transition: all 0.6s;
+      -o-transition: all 0.6s;
+      transition: all 0.6s; }
+    #adventurers-page .adventurer .bg-img {
+      height: 100%;
+      opacity: 0.2; }
+    #adventurers-page .adventurer .prof-img {
+      position: absolute;
+      top: 20px;
+      left: 15%;
+      height: 230px;
+      width: 70%;
+      -webkit-box-shadow: 0px 0px 10px #000;
+      box-shadow: 0px 0px 10px #000;
+      border-radius: 5px; }
+    #adventurers-page .adventurer .info {
+      position: absolute;
+      bottom: 10px;
+      color: #000; }
+      #adventurers-page .adventurer .info span {
+        font-size: 1.2rem;
+        -webkit-transition: all 0.6s;
+        -o-transition: all 0.6s;
+        transition: all 0.6s; }
+      #adventurers-page .adventurer .info p {
+        margin: 10px 10px;
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+        -webkit-transition: all 0.6s;
+        -o-transition: all 0.6s;
+        transition: all 0.6s; }
+      #adventurers-page .adventurer .info button {
+        background-color: transparent;
+        padding: 5px;
+        color: #Fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        outline: none;
+        font-size: 0.8rem; }
+      #adventurers-page .adventurer .info .follow {
+        border-color: #d83030;
+        color: #d83030;
+        opacity: 0.7; }
+        #adventurers-page .adventurer .info .follow:hover {
+          opacity: 1;
+          background-color: #d83030;
+          color: #fff; }
+      #adventurers-page .adventurer .info .more-info {
+        border-color: #9535e4;
+        color: #9535e4;
+        opacity: 0.7; }
+        #adventurers-page .adventurer .info .more-info:hover {
+          opacity: 1;
+          background-color: #9535e4;
+          color: #fff; }
+
+#user-profile {
+  margin: 0 0 60px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 20px #000;
+  box-shadow: 0 0 20px #000;
+  padding-bottom: 50px; }
+  #user-profile a {
+    text-decoration: none; }
+  #user-profile h1 {
+    font-size: 2rem;
+    letter-spacing: 10px;
+    font-weight: 100;
+    margin: 20px 0;
+    border-top: 0.5px dashed #000;
+    padding-top: 30px; }
+  #user-profile .user-banner {
+    margin-bottom: 270px;
+    background-color: #101010;
+    position: relative;
+    height: 50vh; }
+    #user-profile .user-banner .show-user-banner {
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+      display: block; }
+    #user-profile .user-banner .show-user-img {
+      width: 300px;
+      height: 230px;
+      position: absolute;
+      bottom: -200px;
+      left: 0;
+      right: 0;
+      -webkit-box-shadow: 0 0 10px #000;
+      box-shadow: 0 0 10px #000;
+      background-color: #fff;
+      -webkit-transition: all 0.6s;
+      -o-transition: all 0.6s;
+      transition: all 0.6s; }
+    #user-profile .user-banner .user-info {
+      position: absolute;
+      bottom: -160px;
+      left: 40px; }
+      #user-profile .user-banner .user-info span {
+        display: block;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        color: #999; }
+        #user-profile .user-banner .user-info span b {
+          color: #000; }
+    #user-profile .user-banner .change-image {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 0 10px #000;
+      box-shadow: 0 0 10px #000; }
+      #user-profile .user-banner .change-image .form-group {
+        margin-bottom: 5px; }
+      #user-profile .user-banner .change-image button {
+        background-color: rgba(0, 0, 0, 0.4);
+        border: none;
+        border-radius: 5px;
+        color: #f1f1f1;
+        outline: none;
+        cursor: pointer;
+        font-weight: 800; }
+      #user-profile .user-banner .change-image .image-form {
+        display: none;
+        width: 280px;
+        padding: 20px 20px; }
+        #user-profile .user-banner .change-image .image-form .apply {
+          background-color: #421f1f;
+          font-size: 0.8rem;
+          margin-bottom: 10px; }
+        #user-profile .user-banner .change-image .image-form label {
+          font-weight: 800; }
+        #user-profile .user-banner .change-image .image-form input {
+          font-size: 0.8rem;
+          margin-bottom: 10px; }
+  #user-profile .adventure-post {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 0;
+    -webkit-box-shadow: 0 0 2px #333;
+    box-shadow: 0 0 2px #333;
+    overflow-x: hidden;
+    position: relative;
+    color: #000; }
+    #user-profile .adventure-post h5 {
+      margin: 10px 5px; }
+    #user-profile .adventure-post p {
+      margin: 0;
+      padding: 10px 15px; }
+    #user-profile .adventure-post small {
+      position: absolute;
+      bottom: 5px;
+      right: 30px; }
+
+.pagination {
+  margin: 10px;
+  float: left; }
+  .pagination button {
+    display: inline-block;
+    margin: 0;
+    padding: 5px 20px;
+    font-size: 0.8rem;
+    outline: none;
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: pointer; }
+    .pagination button.active {
+      background-color: #e1e1e1; }
+
+/* Navbar scroll fade */
+.navbar {
+  background-color: #333;
+  -webkit-transition: all 0.6s ease-out;
+  -moz-transition: all 0.6s ease-out;
+  -o-transition: all 0.6s ease-out;
+  -ms-transition: all 0.6s ease-out;
+  transition: all 0.6s ease-out; }
+  .navbar a {
+    color: #fff; }
+  .navbar button {
+    outline: none; }
+  .navbar .fa-bars {
+    color: #fff; }
+
+.navbar.scrolled {
+  background: #444444;
+  /* IE */
+  background: rgba(0, 0, 0, 0.6);
+  /* NON-IE */ }
+
+@-webkit-keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  10% {
+    opacity: 1;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out; }
+  20% {
+    opacity: 1; }
+  30% {
+    opacity: 0; } }
+
+@keyframes imageAnimation {
+  0% {
+    opacity: 0;
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in; }
+  10% {
+    opacity: 1;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out; }
+  20% {
+    opacity: 1; }
+  30% {
+    opacity: 0; } }
+
+@media (max-width: 1024px) {
+  #user-profile .user-banner .show-user-img {
+    left: auto;
+    right: 10px; } }
+
+@media (max-width: 767px) {
+  #main-content h1 {
+    font-size: 1.5rem; }
+  #main-content .img-container {
+    display: none; }
+  #user-profile .user-banner {
+    margin-bottom: 330px; }
+    #user-profile .user-banner .show-user-img {
+      left: 0;
+      right: 0; }
+    #user-profile .user-banner .user-info {
+      bottom: -320px;
+      left: 50px; } }
+
+@media (max-width: 500px) {
+  #main-content {
+    overflow-x: hidden; }
+    #main-content h1 {
+      font-size: 1rem;
+      letter-spacing: 5px; }
+    #main-content .adventure-post {
+      padding: 0 0 20px !important; }
+      #main-content .adventure-post .col-lg-5 {
+        padding: 0;
+        margin-bottom: 8px; }
+  #posts-page h1 {
+    font-size: 1rem;
+    letter-spacing: 5px; }
+  #posts-page .adventure-post {
+    padding: 0; }
+    #posts-page .adventure-post .col-md-7 {
+      padding: 20px 40px; }
+  #adventurers-page h1 {
+    font-size: 2rem;
+    letter-spacing: 5px; }
+  #user-profile {
+    margin-top: 0; }
+    #user-profile h1 {
+      font-size: 1rem;
+      letter-spacing: 5px; }
+    #user-profile .user-banner {
+      height: 35vh;
+      margin-bottom: 350px !important; }
+      #user-profile .user-banner .show-user-img {
+        width: 60% !important;
+        min-width: 250px;
+        bottom: -210px !important; }
+      #user-profile .user-banner .user-info {
+        bottom: -320px !important;
+        left: 10px !important; }
+        #user-profile .user-banner .user-info span {
+          font-size: 1rem !important; }
+    #user-profile .adventure-post {
+      margin: 20px 0;
+      padding: 0 5px; }
+      #user-profile .adventure-post .col-sm-4 {
+        padding: 0; }
+  .adventurer-container, .showpost-container, .container {
+    width: 100%;
+    padding: 0; }
+  #showpost-page {
+    width: 100%;
+    padding: 0; } }
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+  opacity: 1; }

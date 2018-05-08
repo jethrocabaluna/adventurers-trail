@@ -1,0 +1,31 @@
+<% include partials/header %>
+
+<div class="container">
+  <div id="adventurers-page">
+    <h1 class="text-center">Adventurers</h1>
+    <div class="row">
+    <% adventurers.forEach(function(adventurer){ %>
+      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+        <div class="adventurer">
+          <div class="bg-img" style="background-image: url(../img/bgSample1.jpeg)"></div>
+          <div class="prof-img" style="background-image: url(../img/userSample1.jpg)"></div>
+          <div class="info">
+            <span class="name">
+              <%= adventurer.username %>
+            </span>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum atque debitis officia molestias, eveniet possimus.</p>
+            <a href="/adventurers/<%= adventurer._id %>">
+              <button class="follow">Follow</button>
+            </a>
+            <a href="/adventurers/<%= adventurer._id %>">
+              <button class="more-info">More Info</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>

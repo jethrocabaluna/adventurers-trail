@@ -1,0 +1,87 @@
+<% include partials/header %>
+
+<div class="container">
+  <div id="main-content">
+    <div class="row">
+      <div class="col-md-4 col-lg-3">
+        <div class="home-selections">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-recent-list" data-toggle="list" href="#list-recent" role="tab"
+              aria-controls="recent">Recent Posts</a>
+            <a class="list-group-item list-group-item-action" id="list-adventurers-list" data-toggle="list" href="#list-adventurers"
+              role="tab" aria-controls="adventurers">Popular Adventurers</a>
+            <a class="list-group-item list-group-item-action" id="list-trends-list" data-toggle="list" href="#list-trends" role="tab"
+              aria-controls="trends">Travel Trends</a>
+          </div>
+          <div class="img-container">
+            <img src="../img/banner.png">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-lg-9">
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="list-recent" role="tabpanel" aria-labelledby="list-recent-list">
+            <h1>Recent Posts</h1>
+            <% posts.forEach(function(post){ %>
+            <a href="/posts/<%= post._id %>">
+              <div class="adventure-post">
+                <div class="row">
+                  <div class="col-xl-4 col-lg-5">
+                    <img src="<%= post.image %>" class="img-fluid" >
+                  </div>
+                  <div class="col-xl-8 col-lg-7">
+                    <h5><%= post.title %></h5>
+                    <p>
+                      <%- post.description.substring(0, 150) %>
+                        <!-- truncate long posts on blogs page -->
+                      <% if(post.description.length > 150){ %>
+                        ...
+                      <% } %>
+                    </p>
+                    <p>
+                      <small class="text-muted">Posted by <%= post.author.username %></small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <% }); %>
+            <a href="/posts" class="see-all-posts btn btn-outline-dark">See All Posts</a>
+          </div>
+          <div class="tab-pane fade" id="list-adventurers" role="tabpanel" aria-labelledby="list-adventurers-list">
+            <h1>Popular Adventurers</h1>
+            <% if(accounts.length > 0) { %>
+              <div class="row">
+              <% accounts.forEach(function(account){ %>
+                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-6 col-xs-12">
+                  <div class="adventurer">
+                    <div class="bg-img" style="background-image: url(../img/bgSample1.jpeg)"></div>
+                    <div class="prof-img" style="background-image: url(../img/userSample1.jpg)"></div>
+                    <div class="info">
+                      <span class="name">
+                        <%= account.username %>
+                      </span>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum atque debitis officia molestias, eveniet possimus.</p>
+                      <a href="/adventurers/<%= account._id %>">
+                        <button class="follow">Follow</button>
+                      </a>
+                      <a href="/adventurers/<%= account._id %>">
+                        <button class="more-info">More Info</button>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              <% }); %>
+              </div>
+            <% } %>
+          </div>
+          <div class="tab-pane fade" id="list-trends" role="tabpanel" aria-labelledby="list-trends-list">
+            <h1>Travel Trends</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>

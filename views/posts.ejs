@@ -1,0 +1,46 @@
+<% include partials/header %>
+
+<div class="container">
+  <div id="posts-page">
+    <h1 class="text-center">Adventure Posts</h1>
+    <% posts.forEach(function(post){ %>
+      <a href="/posts/<%= post._id %>">
+        <div class="adventure-post">
+          <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5 col-xs-12">
+              <img src="<%= post.image %>" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-7 col-xs-12">
+              <h5>
+                <%= post.title %>
+              </h5>
+              <p>
+                <%- post.description.substring(0, 200) %>
+                  <!-- truncate long posts on blogs page -->
+                <% if(post.description.length > 200){ %>
+                  ...
+                <% } %>
+              </p>
+              <p>
+                <small class="text-muted">Posted by <%= post.author.username %></small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% }); %>
+    <div class="pagination">
+      <button class="prev">&lt;&lt;</button>
+      <% for(var i = 1; i <= pageCount; i++) { %>
+        <% if(activePage === i) { %>
+          <a href="/posts/page/<%= i %>"><button class="pagenum active"><%= i %></button></a>
+        <% } else { %>
+          <a href="/posts/page/<%= i %>"><button class="pagenum"><%= i %></button></a>
+        <% } %>
+      <% } %>
+      <button class="next">&gt;&gt;</button>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>

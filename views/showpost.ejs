@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+<div class="container showpost-container">
+  <div id="showpost-page">
+    <div class="card mb-3">
+      <img class="card-img-top" src="<%= post.image %>" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= post.title %></h5>
+        <p class="card-text"><%= post.description %></p>
+        <div class="row">
+          <div class="col">
+            <p class="card-text">
+              <small class="text-muted">Posted by
+                <%= post.author.username %>
+              </small>
+            </p>
+            <p class="card-text">
+              <small class="text-muted">March 10, 2018</small>
+            </p>
+          </div>
+          <div class="col">
+            <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
+            <form class="delete-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-outline-danger">Delete</button>
+            </form>
+            <a href="/posts/<%= post._id %>/edit" class="edit-btn btn btn-outline-warning">Edit</a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>
