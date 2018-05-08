@@ -49,8 +49,15 @@ router.post("/signup", (req, res) => {
         return res.redirect("/signup");
       }
       passport.authenticate("local")(req, res, () => {
-        req.flash("success", "Welcome to Adventurer's Trail " + user.username);
-        res.redirect("/adventures");
+        createdAccount.userAuth.id = req.user._id;
+        createdAccount.save((err, savedAccount) => {
+          if(err) {
+            console.log(err);
+            return res.redirect("/signup");
+          }
+          req.flash("success", "Welcome to Adventurer's Trail " + user.username);
+          res.redirect("/adventures");
+        });
       });
     });
   });

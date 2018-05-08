@@ -18,25 +18,27 @@ var user_y = adventurer.timeCreated.getFullYear();
         <span><b>Member since:</b> <%= user_m + ' ' + user_d + ' ' + user_y %></span>
         <span><b>Followers:</b> 1 million</span>
       </div>
-      <div class="change-image">
-        <button id="edit-button">Edit</button>
-        <div class="image-form">
-          <form action="/adventurers/<%= adventurer._id %>/profile_image" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="prof-img-input">Change Profile Photo</label>
-              <input type="file" class="form-control-file" name="image" id="prof-img-input" required>
-            </div>
-            <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
-          </form>
-          <form action="/adventurers/<%= adventurer._id %>/cover_image" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-              <label for="cover-img-input">Change Cover Photo</label>
-              <input type="file" class="form-control-file" name="image" id="cover-img-input" required>
-            </div>
-            <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
-          </form>
+      <% if(currentUser && adventurer.userAuth.id.equals(currentUser._id)){ %>
+        <div class="change-image">
+          <button id="edit-button">Edit</button>
+          <div class="image-form">
+            <form action="/adventurers/<%= adventurer._id %>/profile_image" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="prof-img-input">Change Profile Photo</label>
+                <input type="file" class="form-control-file" name="image" id="prof-img-input" required>
+              </div>
+              <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
+            </form>
+            <form action="/adventurers/<%= adventurer._id %>/cover_image" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="cover-img-input">Change Cover Photo</label>
+                <input type="file" class="form-control-file" name="image" id="cover-img-input" required>
+              </div>
+              <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
+            </form>
+          </div>
         </div>
-      </div>
+      <% } %>
     </div>
     <h1 class="text-center">Adventurer's Posts</h1>
     <hr>

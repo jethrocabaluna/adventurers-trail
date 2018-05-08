@@ -31,7 +31,7 @@ router.get("/page/:page", (req, res) => {
     }
     pageCount = Math.ceil(count/postsNumLimit);
     pageNum = pageNum > pageCount ? pageCount : pageNum;
-    
+
     Post.find({}, (err, allPosts) => {
       if (err) {
         console.log(err);
@@ -103,7 +103,7 @@ router.put("/:id", middleware.checkPostOwnership, (req, res) => {
     }
     console.log(foundPost.author.username + " edited the post " + foundPost.title);
     req.flash("success", "Successfully edited your post.");
-    res.redirect("/posts" + req.params.id);
+    res.redirect("/posts/" + req.params.id);
   });
 });
 // DELETE request after clicking delete on a post

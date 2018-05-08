@@ -5,6 +5,12 @@ var AccountSchema = new mongoose.Schema({
   lastname: String,
   username: String,
   email: String,
+  userAuth: {
+    id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
+  },
   posts: [
     {
       type: mongoose.Schema.Types.ObjectId,

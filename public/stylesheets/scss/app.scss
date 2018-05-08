@@ -250,7 +250,10 @@ hr {
 #showpost-page {
   margin: 20px auto 50px;
   width: 80%;
-  
+  .delete-form, .edit-btn {
+    float: right;
+    margin-right: 5px;
+  }
 }
 
 #adventurers-page {
@@ -285,6 +288,9 @@ hr {
           opacity: 0;
           cursor: default;
         }
+      }
+      .follow, .more-info {
+        background-color: #000;
       }
     }
 

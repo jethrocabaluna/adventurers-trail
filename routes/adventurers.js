@@ -9,6 +9,8 @@ const   GridFsStorage = require("multer-gridfs-storage"),
 // -------------- models ----------------//
 const Account = require("../models/account"),
       Post    = require("../models/post");
+// ---------------- middleware ------------//
+const middleware = require("../middleware");
 // --------------- inits ---------------//
 const router  = express.Router(),
       conn    = mongoose.createConnection("mongodb://localhost/adventurers_trail");
@@ -56,7 +58,7 @@ router.get("/", (req, res) => {
 });
 // show specific adventurer
 router.get("/:id", (req, res) => {
-  Account.findById(req.params.id).populate("posts").exec((err, foundAccount) => {
+  Account.findById(req.params.id).populate({ path: 'posts', options: { sort: { 'timeCreated': -1 } } }).exec((err, foundAccount) => {
     if(err){
       console.log(err);
       return res.redirect("/adventurers");
@@ -86,7 +88,7 @@ router.get("/image/:filename", (req, res) => {
   });
 });
 // POST request after clicking apply on profile picture upload
-router.post("/:id/profile_image", (req, res, next) => {
+router.post("/:id/profile_image", middleware.isLoggedIn, (req, res, next) => {
   filename = "prof_" + req.params.id;
   gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
     if (err) {
@@ -101,7 +103,7 @@ router.post("/:id/profile_image", (req, res, next) => {
   res.redirect("/adventurers/" + req.params.id);
 });
 // POST request after clicking apply on cover picture upload
-router.post("/:id/cover_image", (req, res, next) => {
+router.post("/:id/cover_image", middleware.isLoggedIn, (req, res, next) => {
   filename = "cover_" + req.params.id;
   gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
     if (err) {

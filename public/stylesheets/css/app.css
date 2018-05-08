@@ -218,6 +218,9 @@ hr {
 #showpost-page {
   margin: 20px auto 50px;
   width: 80%; }
+  #showpost-page .delete-form, #showpost-page .edit-btn {
+    float: right;
+    margin-right: 5px; }
 
 #adventurers-page {
   margin-bottom: 100px; }
@@ -246,6 +249,8 @@ hr {
     #adventurers-page .adventurer:hover .info span, #adventurers-page .adventurer:hover .info p {
       opacity: 0;
       cursor: default; }
+    #adventurers-page .adventurer:hover .follow, #adventurers-page .adventurer:hover .more-info {
+      background-color: #000; }
     #adventurers-page .adventurer .bg-img, #adventurers-page .adventurer .prof-img {
       background-size: cover;
       background-position: center;
