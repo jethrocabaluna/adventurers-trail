@@ -14,20 +14,32 @@ const router = express.Router();
 router.get("/", (req, res) => {
   res.redirect("/posts/page/1");
 });
+router.get("/page", (req, res) => {
+  res.redirect("/posts/page/1");
+});
 router.get("/page/:page", (req, res) => {
   let pageNum = parseInt(req.params.page);
+  if(pageNum < 1) {
+    return res.redirect("/posts/page/1");
+  }
   let pageCount = 0;
   let postsNumLimit = 5;
   Post.count((err, count) => {
-    pageCount = Math.ceil(count/postsNumLimit);
-  });
-  Post.find({}, (err, allPosts) => {
-    if (err) {
+    if(err) {
       console.log(err);
-      return res.redirect("/adventures");
+      return res.redirect("/posts/page/1");
     }
-    res.render("posts", { posts: allPosts, pageCount: pageCount, activePage: pageNum });
-  }).skip(5 * (pageNum - 1)).limit(5).sort({ timeCreated: -1 });
+    pageCount = Math.ceil(count/postsNumLimit);
+    pageNum = pageNum > pageCount ? pageCount : pageNum;
+    
+    Post.find({}, (err, allPosts) => {
+      if (err) {
+        console.log(err);
+        return res.redirect("/adventures");
+      }
+      res.render("posts", { posts: allPosts, pageCount: pageCount, activePage: pageNum });
+    }).skip(5 * (pageNum - 1)).limit(5).sort({ timeCreated: -1 });
+  });
 });
 // create new post
 router.get("/new", middleware.isLoggedIn, (req, res) => {
