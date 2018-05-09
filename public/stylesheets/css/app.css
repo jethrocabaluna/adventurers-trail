@@ -23,6 +23,9 @@ body {
 .alert {
   margin: 0; }
 
+input, textarea, button, select, a {
+  -webkit-tap-highlight-color: transparent; }
+
 hr {
   border: 0;
   height: 1px;
