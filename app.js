@@ -7,6 +7,7 @@ const   passportLocalMongoose   = require("passport-local-mongoose"),
         passport                = require("passport"),
         express                 = require("express"),
         flash                   = require("connect-flash");
+require('dotenv').config();
 // ------------- imported functions -----------//
 const   clearDB     = require("./clearDB"),
         seedDB      = require("./seedDB");
@@ -23,6 +24,7 @@ const   Comment = require("./models/comment"),
         User    = require("./models/user"),
         Post    = require("./models/post");
 
+console.log(process.env.DATABASEURL);
 mongoose.connect(process.env.DATABASEURL);
 app.set("view engine", "ejs");
 
