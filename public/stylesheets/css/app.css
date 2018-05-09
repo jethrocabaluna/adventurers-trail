@@ -174,10 +174,10 @@ hr {
     border-radius: 5px;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
-    transition: all 0.6s; }
+    transition: all 0.6s;
+    overflow: hidden; }
     #main-content #list-adventurers .prof-img img {
-      max-height: 200px;
-      height: auto;
+      height: 100%;
       width: 100%; }
 
 #posts-page {
