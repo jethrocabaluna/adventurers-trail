@@ -11,7 +11,11 @@ var user_y = adventurer.timeCreated.getFullYear();
   <div id="user-profile">
     <div class="user-banner">
       <a href="image/<%= coverImage %>"><img src="image/<%= coverImage %>" class="show-user-banner" alt="<%= adventurer.username %>"></a>
-      <a href="image/<%= profileImage %>"><img src="image/<%= profileImage %>" class="show-user-img img-fluid rounded mx-auto d-block" alt="<%= adventurer.username %>"></a>
+      <a href="image/<%= profileImage %>">
+        <div class="show-user-img">
+          <img src="image/<%= profileImage %>" class="mx-auto d-block" alt="<%= adventurer.username %>">
+        </div>
+      </a>
       <div class="user-info">
         <span><b>Name:</b> <%= adventurer.username %></span>
         <span><b>Country:</b> Philippines</span>
