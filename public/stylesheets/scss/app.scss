@@ -119,8 +119,7 @@ hr {
           opacity: 0.8;
           left: 5%;
           top: 5px;
-          height: auto;
-          max-height: 50px;
+          height: 50px;
           width: 50px;
         }
         .info {
@@ -194,16 +193,16 @@ hr {
       position: absolute;
       top: 30px;
       left: 30px;
-      max-height: 200px;
-      height: auto;
+      height: 200px;
       width: 200px;
       box-shadow: 0px 0px 10px #000;
       border-radius: 5px;
       transition: all 0.6s;
       overflow: hidden;
+      background-color: rgba(0,0,0,0.7);
       img {
         height: 100%;
-        width: 100%;
+        width: auto;
       }
     }
   }
@@ -285,7 +284,6 @@ hr {
         left: 5%;
         top: 5px;
         height: 50px;
-        min-height: 50px;
         width: 50px;
       }
       .info {
@@ -316,9 +314,12 @@ hr {
       box-shadow: 0px 0px 10px #000;
       border-radius: 5px;
       transition: all 0.6s;
+      overflow: hidden;
+      background-color: rgba(0,0,0,0.7);
       img {
         height: 100%;
-        width: 100%;
+        width: auto;
+        // max-width: 100%;
       }
     }
     .info {

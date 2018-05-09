@@ -24,7 +24,6 @@ const   Comment = require("./models/comment"),
         User    = require("./models/user"),
         Post    = require("./models/post");
 
-console.log(process.env.DATABASEURL);
 mongoose.connect(process.env.DATABASEURL);
 app.set("view engine", "ejs");
 

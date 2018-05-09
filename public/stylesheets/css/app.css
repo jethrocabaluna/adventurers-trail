@@ -104,8 +104,7 @@ hr {
       opacity: 0.8;
       left: 5%;
       top: 5px;
-      height: auto;
-      max-height: 50px;
+      height: 50px;
       width: 50px; }
     #main-content #list-adventurers .adventurer:hover .info span, #main-content #list-adventurers .adventurer:hover .info p {
       opacity: 0;
@@ -166,8 +165,7 @@ hr {
     position: absolute;
     top: 30px;
     left: 30px;
-    max-height: 200px;
-    height: auto;
+    height: 200px;
     width: 200px;
     -webkit-box-shadow: 0px 0px 10px #000;
     box-shadow: 0px 0px 10px #000;
@@ -175,10 +173,11 @@ hr {
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     transition: all 0.6s;
-    overflow: hidden; }
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7); }
     #main-content #list-adventurers .prof-img img {
       height: 100%;
-      width: 100%; }
+      width: auto; }
 
 #posts-page {
   margin-bottom: 100px; }
@@ -247,7 +246,6 @@ hr {
       left: 5%;
       top: 5px;
       height: 50px;
-      min-height: 50px;
       width: 50px; }
     #adventurers-page .adventurer:hover .info span, #adventurers-page .adventurer:hover .info p {
       opacity: 0;
@@ -273,10 +271,12 @@ hr {
       border-radius: 5px;
       -webkit-transition: all 0.6s;
       -o-transition: all 0.6s;
-      transition: all 0.6s; }
+      transition: all 0.6s;
+      overflow: hidden;
+      background-color: rgba(0, 0, 0, 0.7); }
       #adventurers-page .adventurer .prof-img img {
         height: 100%;
-        width: 100%; }
+        width: auto; }
     #adventurers-page .adventurer .info {
       position: absolute;
       bottom: 10px;
