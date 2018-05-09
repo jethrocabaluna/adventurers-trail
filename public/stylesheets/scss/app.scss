@@ -201,7 +201,8 @@ hr {
       border-radius: 5px;
       transition: all 0.6s;
       img {
-        height: 100%;
+        max-height: 200px;
+        height: auto;
         width: 100%;
       }
     }
