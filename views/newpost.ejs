@@ -3,9 +3,9 @@
   <div class="container margin-container">
     <h1 class="text-center">Create Post</h1>
     <hr>
-    <form class="account-form" action="/posts" method="POST">
+    <form class="post-form" action="/posts" method="POST">
       <div class="form-group">
-        <input type="text" class="form-control" name="post[title]" placeholder="Title" required="true" value="Untitled">
+        <input type="text" class="form-control" name="post[title]" placeholder="Title" required="true" value="Untitled" maxlength="40">
       </div>
       <div class="form-group">
         <input type="text" class="form-control" name="post[image]" placeholder="Image url" required="true">
@@ -13,8 +13,7 @@
       <div class="form-group">
         <textarea class="form-control" name="post[description]" cols="30" rows="10" placeholder="description" required="true"></textarea>
       </div>
-      <button style="display: block;" type="submit" class="btn btn-primary mx-auto">Post</button>
+      <button style="display: block;" type="submit" id="new-post-btn" class="btn btn-primary mx-auto">Post</button>
     </form>
   </div>
-
   <% include partials/footer %>

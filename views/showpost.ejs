@@ -13,7 +13,10 @@ var post_y = post.timeCreated.getFullYear();
       <img class="card-img-top" src="<%= post.image %>" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><%= post.title %></h5>
-        <p class="card-text"><%= post.description %></p>
+        <p id="post-content" class="card-text"><%= post.description %></p>
+        <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
+        <button class="edit-content"><i class="fa fa-edit"></i> Add Content</button>
+        <% } %>
         <div class="row">
           <div class="col">
             <p class="card-text">
