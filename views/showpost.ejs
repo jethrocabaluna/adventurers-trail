@@ -8,14 +8,30 @@ var post_y = post.timeCreated.getFullYear();
 
 %>
 <div class="container showpost-container">
+  <div class="add-content">
+    <span id="close-add-btn">X</span>
+    <h2>New Content</h2>
+    <button class="add-header btn btn-outline-primary btn-sm active">Header</button><button class="add-paragraph btn btn-outline-info btn-sm">Paragraph</button>
+    <form id="add-content-form" action="/posts/<%= post._id %>" method="POST">
+      <div class="form-group">
+        <textarea class="form-control" name="content" cols="30" rows="5" placeholder=" text" required="true"></textarea>
+        <button style="display: block;" type="submit" class="btn btn-primary mx-auto">Add</button>
+      </div>
+    </form>
+  </div>
   <div id="showpost-page">
     <div class="card mb-3">
       <img class="card-img-top" src="<%= post.image %>" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><%= post.title %></h5>
         <p id="post-content" class="card-text"><%= post.description %></p>
+        <% if(post.content != undefined) { %>
+          <div class="more-content">
+            <%- post.content %>
+          </div>
+        <% } %>
         <% if(currentUser && post.author.id.equals(currentUser._id)){ %>
-        <button class="edit-content"><i class="fa fa-edit"></i> Add Content</button>
+        <button id="add-content-btn"><i class="fa fa-edit"></i> Add Content</button>
         <% } %>
         <div class="row">
           <div class="col">

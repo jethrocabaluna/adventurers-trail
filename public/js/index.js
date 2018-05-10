@@ -51,4 +51,38 @@ window.onload = function () {
     }
   });
 
+  $('#add-content-btn').click(function() {
+    $('.add-content').slideToggle(200);
+  });
+
+  $('#close-add-btn').click(function() {
+    $('.add-content').hide(200);
+  });
+
+  $('.add-header').click(function() {
+    if($('.add-paragraph').hasClass('active')) {
+      $('.add-paragraph').removeClass('active');
+    }
+    $('.add-header').addClass('active');
+  });
+  $('.add-paragraph').click(function () {
+    if ($('.add-header').hasClass('active')) {
+      $('.add-header').removeClass('active');
+    }
+    $('.add-paragraph').addClass('active');
+  });
+  $('#add-content-form').submit(function() {
+    if($('.add-header').hasClass('active')) {
+      $('#add-content-form textarea').val("<h1>" + $('#add-content-form textarea').val() + "</h1>");
+    } else if ($('.add-paragraph').hasClass('active')) {
+      $('#add-content-form textarea').val("<p>" + $('#add-content-form textarea').val() + "</p>");
+    } else {
+      return false;
+    }
+    return true;
+  });
+
+  setTimeout(function () { 
+    $('nav + .flash-message').fadeOut(1000);
+  }, 1000);
 };

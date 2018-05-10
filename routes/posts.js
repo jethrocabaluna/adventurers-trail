@@ -79,9 +79,32 @@ router.get("/:id", (req, res) => {
   Post.findById(req.params.id, (err, foundPost) => {
     if (err) {
       console.log(err);
-      return res.redirect.redirect("/posts");
+      return res.redirect("/posts");
     }
     res.render("showpost", { post: foundPost });
+  });
+});
+// add content to post
+router.post("/:id", (req, res) => {
+  Post.findById(req.params.id, (err, foundPost) => {
+    if(err) {
+      console.log(err);
+      return res.redirect("/posts");
+    }
+    if(foundPost.content == undefined) {
+      foundPost.content = req.body.content;
+    } else {
+      foundPost.content += req.body.content;
+    }
+    foundPost.save((err, savedPost) => {
+      if(err) {
+        console.log(err);
+        return res.redirect("/posts");
+      }
+      console.log("added new content to Post" + savedPost.title);
+      req.flash("success", "Thank you for adding new content.");
+      res.redirect("/posts/" + req.params.id);
+    });
   });
 });
 // edit post
