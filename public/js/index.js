@@ -44,4 +44,11 @@ window.onload = function () {
   $('#post-content').text(decodeHtml($('#post-content').text()));
   $('#edit-post-textarea').val(decodeHtml($('#edit-post-textarea').val()));
 
+  $("textarea").keydown(function (e) {
+    // prevent new line in textarea
+    if (e.keyCode == 13) {
+      e.preventDefault();
+    }
+  });
+
 };
