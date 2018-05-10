@@ -8,16 +8,16 @@
       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-xs-12">
         <div class="adventurer">
           <div class="bg-img"><img src="../img/bgSample1.jpg"></div>
-          <div class="prof-img"><img src="/adventurers/image/prof_<%= adventurer._id %>"></div>
+          <div class="prof-img"><img src="/adventurers/image/prof_<%= adventurer.username %>"></div>
           <div class="info">
             <span class="name">
               <%= adventurer.username %>
             </span>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum atque debitis officia molestias, eveniet possimus.</p>
-            <a href="/adventurers/<%= adventurer._id %>">
+            <a href="/adventurers/<%= adventurer.username %>">
               <button class="follow">Follow</button>
             </a>
-            <a href="/adventurers/<%= adventurer._id %>">
+            <a href="/adventurers/<%= adventurer.username %>">
               <button class="more-info">More Info</button>
             </a>
           </div>

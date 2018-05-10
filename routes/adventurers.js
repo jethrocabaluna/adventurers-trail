@@ -57,14 +57,14 @@ router.get("/", (req, res) => {
   });
 });
 // show specific adventurer
-router.get("/:id", (req, res) => {
-  Account.findById(req.params.id).populate({ path: 'posts', options: { sort: { 'timeCreated': -1 } } }).exec((err, foundAccount) => {
+router.get("/:username", (req, res) => {
+  Account.findOne({ username: req.params.username }).populate({ path: 'posts', options: { sort: { 'timeCreated': -1 } } }).exec((err, foundAccount) => {
     if(err){
       console.log(err);
       return res.redirect("/adventurers");
     }
-    let profImage = "prof_" + foundAccount._id;
-    let coverImage = "cover_" + foundAccount._id;
+    let profImage = "prof_" + foundAccount.username;
+    let coverImage = "cover_" + foundAccount.username;
     return res.render("showAdventurer.ejs", { adventurer: foundAccount, profileImage: profImage, coverImage: coverImage });
   });
 });
@@ -88,8 +88,8 @@ router.get("/image/:filename", (req, res) => {
   });
 });
 // POST request after clicking apply on profile picture upload
-router.post("/:id/profile_image", middleware.isLoggedIn, (req, res, next) => {
-  filename = "prof_" + req.params.id;
+router.post("/:username/profile_image", middleware.isLoggedIn, (req, res, next) => {
+  filename = "prof_" + req.params.username;
   gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
     if (err) {
       console.log("nothing to replace");
@@ -100,11 +100,11 @@ router.post("/:id/profile_image", middleware.isLoggedIn, (req, res, next) => {
   return next();
 }, upload.single('image'), (req, res) => {
   filename = "";
-  res.redirect("/adventurers/" + req.params.id);
+  res.redirect("/adventurers/" + req.params.username);
 });
 // POST request after clicking apply on cover picture upload
-router.post("/:id/cover_image", middleware.isLoggedIn, (req, res, next) => {
-  filename = "cover_" + req.params.id;
+router.post("/:username/cover_image", middleware.isLoggedIn, (req, res, next) => {
+  filename = "cover_" + req.params.username;
   gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
     if (err) {
       console.log("nothing to replace");
@@ -115,7 +115,7 @@ router.post("/:id/cover_image", middleware.isLoggedIn, (req, res, next) => {
   return next();
 }, upload.single('image'), (req, res) => {
   filename = "";
-  res.redirect("/adventurers/" + req.params.id);
+  res.redirect("/adventurers/" + req.params.username);
 });
 
 module.exports = router;

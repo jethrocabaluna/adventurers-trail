@@ -26,14 +26,14 @@ var user_y = adventurer.timeCreated.getFullYear();
         <div class="change-image">
           <button id="edit-button">Edit</button>
           <div class="image-form">
-            <form action="/adventurers/<%= adventurer._id %>/profile_image" method="POST" enctype="multipart/form-data">
+            <form action="/adventurers/<%= adventurer.username %>/profile_image" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="prof-img-input">Change Profile Photo</label>
                 <input type="file" class="form-control-file" name="image" id="prof-img-input" required>
               </div>
               <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
             </form>
-            <form action="/adventurers/<%= adventurer._id %>/cover_image" method="POST" enctype="multipart/form-data">
+            <form action="/adventurers/<%= adventurer.username %>/cover_image" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="cover-img-input">Change Cover Photo</label>
                 <input type="file" class="form-control-file" name="image" id="cover-img-input" required>

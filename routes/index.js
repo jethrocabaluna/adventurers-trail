@@ -56,7 +56,7 @@ router.post("/signup", (req, res) => {
             return res.redirect("/signup");
           }
           req.flash("success", "Welcome to Adventurer's Trail " + user.username);
-          res.redirect("/adventures");
+          res.redirect("/adventurers/" + user.username);
         });
       });
     });
@@ -68,9 +68,12 @@ router.get("/login", (req, res) => {
 });
 // POST request after log in
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/adventures",
+  // successRedirect: "/adventures",
   failureRedirect: "/login"
-}), (req, res) => {});
+}), (req, res) => {
+  console.log("after login");
+  res.redirect("/adventurers/" + req.user.username);
+});
 // logout route
 router.get("/logout", (req, res) => {
   req.logout();
