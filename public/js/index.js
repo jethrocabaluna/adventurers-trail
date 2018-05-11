@@ -72,6 +72,7 @@ window.onload = function () {
     $('.add-paragraph').addClass('active');
   });
   $('#add-content-form').submit(function() {
+    $('.add-content').hide();
     var content = $('#add-content-form textarea').val();
     content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if($('.add-header').hasClass('active')) {

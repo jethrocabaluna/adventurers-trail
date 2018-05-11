@@ -36,27 +36,37 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res) => {
   let newUser = new User({ username: req.body.username });
   let newAccount = { firstname: req.body.firstname, lastname: req.body.lastname, username: req.body.username, email: req.body.email };
-  Account.create(newAccount, (err, createdAccount) => {
-    if (err) {
+  Account.count({ username: req.body.username }, function(err, count) {
+    if(err) {
       console.log(err);
       return res.redirect("/signup");
     }
-    console.log("Added " + createdAccount.firstname + " " + createdAccount.lastname + " to the accounts database.");
-
-    User.register(newUser, req.body.password, (err, user) => {
+    if(count > 0) {
+      req.flash("error", "The username " + req.body.username + " already exists.");
+      return res.redirect("/signup");
+    }
+    Account.create(newAccount, (err, createdAccount) => {
       if (err) {
         console.log(err);
         return res.redirect("/signup");
       }
-      passport.authenticate("local")(req, res, () => {
-        createdAccount.userAuth.id = req.user._id;
-        createdAccount.save((err, savedAccount) => {
-          if(err) {
-            console.log(err);
-            return res.redirect("/signup");
-          }
-          req.flash("success", "Welcome to Adventurer's Trail " + user.username);
-          res.redirect("/adventurers/" + user.username);
+      console.log("Added " + createdAccount.firstname + " " + createdAccount.lastname + " to the accounts database.");
+
+      User.register(newUser, req.body.password, (err, user) => {
+        if (err) {
+          console.log(err);
+          return res.redirect("/signup");
+        }
+        passport.authenticate("local")(req, res, () => {
+          createdAccount.userAuth.id = req.user._id;
+          createdAccount.save((err, savedAccount) => {
+            if (err) {
+              console.log(err);
+              return res.redirect("/signup");
+            }
+            req.flash("success", "Welcome to Adventurer's Trail " + user.username);
+            res.redirect("/adventurers/" + user.username);
+          });
         });
       });
     });
