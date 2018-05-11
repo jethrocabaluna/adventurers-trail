@@ -39,7 +39,11 @@ var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July'
       </a>
     <% }); %>
     <div class="pagination">
-      <a href="/posts/page/<%= activePage - 1 %>"><button class="prev">&lt;&lt;</button></a>
+      <% if(activePage !== 1) { %>
+        <a href="/posts/page/<%= activePage - 1 %>"><button class="prev">&lt;&lt;</button></a>
+      <% } else { %>
+        <a href="/posts/page/1"><button class="prev" disabled>&lt;&lt;</button></a>
+      <% } %>
       <% for(var i = 1; i <= pageCount; i++) { %>
         <% if(activePage === i) { %>
           <a href="/posts/page/<%= i %>"><button class="pagenum active"><%= i %></button></a>
@@ -47,7 +51,12 @@ var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July'
           <a href="/posts/page/<%= i %>"><button class="pagenum"><%= i %></button></a>
         <% } %>
       <% } %>
-      <a href="/posts/page/<%= activePage + 1 %>"><button class="next">&gt;&gt;</button></a>
+      <% if(activePage === pageCount) { %>
+        <a href="/posts/page/<%= activePage %>"><button class="next" disabled>&gt;&gt;</button></a>
+      <% } else { %>
+        <a href="/posts/page/<%= activePage + 1 %>"><button class="next">&gt;&gt;</button></a>
+      <% } %>
+      
     </div>
   </div>
 </div>
