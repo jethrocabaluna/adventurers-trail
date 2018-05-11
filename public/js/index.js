@@ -72,10 +72,12 @@ window.onload = function () {
     $('.add-paragraph').addClass('active');
   });
   $('#add-content-form').submit(function() {
+    var content = $('#add-content-form textarea').val();
+    content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if($('.add-header').hasClass('active')) {
-      $('#add-content-form textarea').val("<h1>" + $('#add-content-form textarea').val() + "</h1>");
+      $('#add-content-form textarea').val("<h1>" + content + "</h1>");
     } else if ($('.add-paragraph').hasClass('active')) {
-      $('#add-content-form textarea').val("<p>" + $('#add-content-form textarea').val() + "</p>");
+      $('#add-content-form textarea').val("<p>" + content + "</p>");
     } else {
       return false;
     }

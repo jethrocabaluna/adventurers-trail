@@ -85,7 +85,7 @@ router.get("/:id", (req, res) => {
   });
 });
 // add content to post
-router.post("/:id", (req, res) => {
+router.post("/:id", middleware.isLoggedIn, (req, res) => {
   Post.findById(req.params.id, (err, foundPost) => {
     if(err) {
       console.log(err);
@@ -131,14 +131,26 @@ router.put("/:id", middleware.checkPostOwnership, (req, res) => {
 });
 // DELETE request after clicking delete on a post
 router.delete("/:id", middleware.checkPostOwnership, (req, res) => {
-  Post.findByIdAndRemove(req.params.id, (err) => {
-    if(err){
+  Post.findById(req.params.id, (err, foundPost) => {
+    if (err) {
       console.log(err);
       return res.redirect("/posts/" + req.params.id);
     }
-    console.log(req.user.username + " deleted a post");
-    req.flash("success", "Successfully deleted your post.");
-    res.redirect("/posts");
+    Account.findOne({ username: foundPost.author.username }, (err, foundAccount) => {
+      if (err) {
+        console.log(err);
+        return res.redirect("/posts/" + req.params.id);
+      }
+      foundAccount.posts.pull({ _id: req.params.id });
+      foundAccount.save((err, savedAccount) => {
+        if(err) {
+          console.log(err);
+          return res.redirect("/posts/" + req.params.id);
+        }
+        foundPost.remove();
+        res.redirect("/posts");
+      });
+    });
   });
 });
 
