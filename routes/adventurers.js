@@ -90,21 +90,35 @@ router.get("/image/:filename", (req, res) => {
 // POST request after clicking apply on profile picture upload
 router.post("/:username/profile_image", middleware.isLoggedIn, (req, res, next) => {
   filename = "prof_" + req.params.username;
-  gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
+  gfs.exist({ filename: filename, root: 'uploads' }, (err, found) => {
     if (err) {
-      console.log("nothing to replace");
-      return;
+      console.log(err);
+    } 
+    if(found) {
+      upload(req, res, (err) => {
+        if (err) {
+          req.flash("error", "maximum filesize: 1MB");
+          return res.redirect("/adventurers/" + req.params.username);
+        }
+        gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          console.log("replaced old profile image");
+        });
+        return next();
+      });
+    } else {
+      console.log("nothing to replace!");
+      upload(req, res, (err) => {
+        if (err) {
+          req.flash("error", "maximum filesize: 1MB");
+          return res.redirect("/adventurers/" + req.params.username);
+        }
+        return next();
+      });
     }
-    console.log("replaced old profile image");
-  });
-  return next();
-}, (req, res, next) => {
-  upload(req, res, (err) => {
-    if (err) {
-      req.flash("error", "maximum filesize: 1MB");
-      return res.redirect("/adventurers/" + req.params.username);
-    }
-    return next();
   });
 }, (req, res) => {
   filename = "";
@@ -113,21 +127,35 @@ router.post("/:username/profile_image", middleware.isLoggedIn, (req, res, next) 
 // POST request after clicking apply on cover picture upload
 router.post("/:username/cover_image", middleware.isLoggedIn, (req, res, next) => {
   filename = "cover_" + req.params.username;
-  gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
+  gfs.exist({ filename: filename, root: 'uploads' }, (err, found) => {
     if (err) {
-      console.log("nothing to replace");
-      return;
+      console.log(err);
     }
-    console.log("replaced old cover image");
-  });
-  return next();
-}, (req, res, next) => {
-  upload(req, res, (err) => {
-    if (err) {
-      req.flash("error", "maximum filesize: 1MB");
-      return res.redirect("/adventurers/" + req.params.username);
+    if (found) {
+      upload(req, res, (err) => {
+        if (err) {
+          req.flash("error", "maximum filesize: 1MB");
+          return res.redirect("/adventurers/" + req.params.username);
+        }
+        gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          console.log("replaced old cover image");
+        });
+        return next();
+      });
+    } else {
+      console.log("nothing to replace!");
+      upload(req, res, (err) => {
+        if (err) {
+          req.flash("error", "maximum filesize: 1MB");
+          return res.redirect("/adventurers/" + req.params.username);
+        }
+        return next();
+      });
     }
-    return next();
   });
 }, (req, res) => {
   filename = "";
