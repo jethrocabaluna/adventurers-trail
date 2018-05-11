@@ -534,6 +534,12 @@ hr {
         display: none;
         width: 280px;
         padding: 20px 20px;
+        span {
+          position: absolute;
+          top: 5px;
+          right: 10px;
+          color: rgb(212, 212, 138);
+        }
         .apply {
           background-color: rgb(66, 31, 31);
           font-size: 0.8rem;
@@ -545,6 +551,8 @@ hr {
         input {
           font-size: 0.8rem;
           margin-bottom: 10px;
+          color: #fff;
+          background-color: rgba(255, 255, 255, 0.6);
         }
       }
     }

@@ -31,16 +31,16 @@ const storage = new GridFsStorage({
         if (err) {
           return reject(err);
         }
-      const fileInfo = {
-        filename: filename,
-        bucketName: 'uploads'
-      };
-      resolve(fileInfo);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
     });
-  });
   }
 });
-const upload = multer({ storage });
+const upload = multer({ storage, limits: { fileSize: 1000000 } }).single('image');
 
 
 // --------------------- ROUTES ---------------- //
@@ -98,7 +98,15 @@ router.post("/:username/profile_image", middleware.isLoggedIn, (req, res, next) 
     console.log("replaced old profile image");
   });
   return next();
-}, upload.single('image'), (req, res) => {
+}, (req, res, next) => {
+  upload(req, res, (err) => {
+    if (err) {
+      req.flash("error", "maximum filesize: 1MB");
+      return res.redirect("/adventurers/" + req.params.username);
+    }
+    return next();
+  });
+}, (req, res) => {
   filename = "";
   res.redirect("/adventurers/" + req.params.username);
 });
@@ -113,7 +121,15 @@ router.post("/:username/cover_image", middleware.isLoggedIn, (req, res, next) =>
     console.log("replaced old cover image");
   });
   return next();
-}, upload.single('image'), (req, res) => {
+}, (req, res, next) => {
+  upload(req, res, (err) => {
+    if (err) {
+      req.flash("error", "maximum filesize: 1MB");
+      return res.redirect("/adventurers/" + req.params.username);
+    }
+    return next();
+  });
+}, (req, res) => {
   filename = "";
   res.redirect("/adventurers/" + req.params.username);
 });
