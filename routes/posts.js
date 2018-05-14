@@ -147,15 +147,15 @@ router.post("/:id", middleware.isLoggedIn, (req, res) => {
   });
 });
 // edit post
-router.get("/:id/edit", middleware.checkPostOwnership, (req, res) => {
-  Post.findById(req.params.id, (err, foundPost) => {
-    if(err){
-      console.log(err);
-      return res.redirect("/posts/" + req.params.id);
-    }
-    res.render("editpost", { post: foundPost });
-  });
-});
+// router.get("/:id/edit", middleware.checkPostOwnership, (req, res) => {
+//   Post.findById(req.params.id, (err, foundPost) => {
+//     if(err){
+//       console.log(err);
+//       return res.redirect("/posts/" + req.params.id);
+//     }
+//     res.render("editpost", { post: foundPost });
+//   });
+// });
 // PUT request after edit page
 // router.put("/:id", middleware.checkPostOwnership, (req, res) => {
 //   Post.findByIdAndUpdate(req.params.id, req.body.post, (err, foundPost) => {
