@@ -10,10 +10,10 @@ var user_y = adventurer.timeCreated.getFullYear();
 <div class="container adventurer-container">
   <div id="user-profile">
     <div class="user-banner">
-      <a href="image/<%= coverImage %>"><img src="image/<%= coverImage %>" class="show-user-banner" alt="<%= adventurer.username %>"></a>
-      <a href="image/<%= profileImage %>">
+      <a href="/image/<%= coverImage %>"><img src="/image/<%= coverImage %>" class="show-user-banner" alt="<%= adventurer.username %>"></a>
+      <a href="/image/<%= profileImage %>">
         <div class="show-user-img">
-          <img src="image/<%= profileImage %>" class="mx-auto d-block" alt="<%= adventurer.username %>">
+          <img src="/image/<%= profileImage %>" class="mx-auto d-block" alt="<%= adventurer.username %>">
         </div>
       </a>
       <div class="user-info">
@@ -58,19 +58,18 @@ var user_y = adventurer.timeCreated.getFullYear();
       <div class="adventure-post">
         <div class="row">
           <div class="col-xl-3 col-lg-4 col-md-5 padding-0">
-            <img src="<%= post.image %>" class="img-fluid" alt="Adventure image">
+            <img src="/image/<%= post.image %>" class="img-fluid" alt="Adventure image">
           </div>
           <div class="col-xl-9 col-lg-8 col-md-7 padding-0">
-            <h5>
-              <%= post.title %>
-            </h5>
+            <% if(post.content != undefined) { %>
             <p>
-              <%- post.description.substring(0, 200) %>
-                <!-- truncate long posts on blogs page -->
-                <% if(post.description.length > 200){ %>
+              <%- post.content.substring(0, 200) %>
+            
+                <% if(post.content.length > 200){ %>
                   ...
                   <% } %>
             </p>
+            <% } %>
             <p>
               <small class="post-author text-muted">Posted by
                 <%= post.author.username %>

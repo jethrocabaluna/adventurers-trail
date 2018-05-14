@@ -1,13 +1,46 @@
 // -------------------- dependencies ------------------ //
-const express = require("express");
+const GridFsStorage = require("multer-gridfs-storage"),
+      mongoose = require('mongoose'),
+      express = require("express"),
+      multer = require("multer"),
+      crypto = require("crypto"),
+      path = require("path"),
+      Grid = require("gridfs-stream");
 // -------------------- import middlewares --------------- //
 const middleware = require("../middleware");
 // -------------------- models -------------------- //
 const Account = require("../models/account"),
       Post    = require("../models/post");
 
-const router = express.Router();
+const router = express.Router(),
+      conn = mongoose.createConnection(process.env.DATABASEURL);
 
+let gfs;
+conn.once('open', () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+// --------------- Create storage engine -------------//
+let filename = "";
+const storage = new GridFsStorage({
+  url: process.env.DATABASEURL,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+const upload = multer({ storage, limits: { fileSize: 1000000 } }).single('image');
 
 // ---------------------- ROUTES ----------------------- //
 // show posts
@@ -47,29 +80,35 @@ router.get("/new", middleware.isLoggedIn, (req, res) => {
 });
 // POST request after new post page
 router.post("/", middleware.isLoggedIn, (req, res) => {
-  req.body.post.author = {
-    id: req.user._id,
-    username: req.user.username
-  };
-  Post.create(req.body.post, (err, createdPost) => {
+  Post.create( { 'author.id': req.user._id, 'author.username': req.user.username, title: 'Untitled' }, (err, createdPost) => {
     if (err) {
       console.log(err);
       return res.redirect("/posts");
     }
-    Account.findOne({ username: createdPost.author.username }, (err, foundAccount) => {
+    filename = "post_" + createdPost._id;
+    createdPost.image = filename;
+    createdPost.save();
+    upload(req, res, (err) => {
       if (err) {
-        console.log(err);
-        return res.redirect("/posts");
+        req.flash("error", "maximum filesize: 1MB");
+        createdPost.remove();
+        return res.redirect("/posts/new");
       }
-      foundAccount.posts.push(createdPost);
-      foundAccount.save((err, savedAccount) => {
+      Account.findOne({ username: createdPost.author.username }, (err, foundAccount) => {
         if (err) {
           console.log(err);
           return res.redirect("/posts");
         }
-        console.log(savedAccount.username + " posted " + createdPost.title);
-        req.flash("success", "Thank you for adding a new post, " + savedAccount.username);
-        res.redirect("/posts");
+        foundAccount.posts.push(createdPost);
+        foundAccount.save((err, savedAccount) => {
+          if (err) {
+            console.log(err);
+            return res.redirect("/posts");
+          }
+          console.log(savedAccount.username + " posted " + createdPost.title);
+          req.flash("success", "Thank you for adding a new post, " + savedAccount.username);
+          res.redirect("/posts/" + createdPost._id);
+        });
       });
     });
   });
@@ -101,7 +140,7 @@ router.post("/:id", middleware.isLoggedIn, (req, res) => {
         console.log(err);
         return res.redirect("/posts");
       }
-      console.log("added new content to Post" + savedPost.title);
+      console.log("added new content to Post " + savedPost.title);
       req.flash("success", "Thank you for adding new content.");
       res.redirect("/posts/" + req.params.id);
     });
@@ -118,17 +157,17 @@ router.get("/:id/edit", middleware.checkPostOwnership, (req, res) => {
   });
 });
 // PUT request after edit page
-router.put("/:id", middleware.checkPostOwnership, (req, res) => {
-  Post.findByIdAndUpdate(req.params.id, req.body.post, (err, foundPost) => {
-    if(err){
-      console.log(err);
-      return res.redirect("/posts/" + req.params.id);
-    }
-    console.log(foundPost.author.username + " edited the post " + foundPost.title);
-    req.flash("success", "Successfully edited your post.");
-    res.redirect("/posts/" + req.params.id);
-  });
-});
+// router.put("/:id", middleware.checkPostOwnership, (req, res) => {
+//   Post.findByIdAndUpdate(req.params.id, req.body.post, (err, foundPost) => {
+//     if(err){
+//       console.log(err);
+//       return res.redirect("/posts/" + req.params.id);
+//     }
+//     console.log(foundPost.author.username + " edited the post " + foundPost.title);
+//     req.flash("success", "Successfully edited your post.");
+//     res.redirect("/posts/" + req.params.id);
+//   });
+// });
 // DELETE request after clicking delete on a post
 router.delete("/:id", middleware.checkPostOwnership, (req, res) => {
   Post.findById(req.params.id, (err, foundPost) => {

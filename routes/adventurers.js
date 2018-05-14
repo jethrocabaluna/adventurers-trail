@@ -68,25 +68,7 @@ router.get("/:username", (req, res) => {
     return res.render("showAdventurer.ejs", { adventurer: foundAccount, profileImage: profImage, coverImage: coverImage });
   });
 });
-// view the image using image filename
-router.get("/image/:filename", (req, res) => {
-  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-    if (!file || file.length === 0) {
-      return res.status(404).json({
-        err: 'No file exists'
-      });
-    }
-    // check type
-    if (file.contentType === 'image/jpeg' || file.contentType === 'image/jpg' || file.contentType === 'image/png') {
-      const readstream = gfs.createReadStream(file.filename);
-      readstream.pipe(res);
-    } else {
-      res.status(404).json({
-        err: 'Not an image'
-      });
-    }
-  });
-});
+
 // POST request after clicking apply on profile picture upload
 router.post("/:username/profile_image", middleware.isLoggedIn, (req, res, next) => {
   filename = "prof_" + req.params.username;

@@ -76,7 +76,7 @@ window.onload = function () {
     var content = $('#add-content-form textarea').val();
     content = content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
     if($('.add-header').hasClass('active')) {
-      $('#add-content-form textarea').val("<h1>" + content + "</h1>");
+      $('#add-content-form textarea').val("<h5>" + content + "</h5>");
     } else if ($('.add-paragraph').hasClass('active')) {
       $('#add-content-form textarea').val("<p>" + content + "</p>");
     } else {

@@ -35,17 +35,18 @@ var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July'
               <div class="adventure-post">
                 <div class="row">
                   <div class="col-xl-4 col-lg-5">
-                    <img src="<%= post.image %>" class="img-fluid" >
+                    <img src="/image/<%= post.image %>" class="img-fluid" >
                   </div>
                   <div class="col-xl-8 col-lg-7">
-                    <h5><%= post.title %></h5>
+                    <% if(post.content != undefined) { %>
                     <p>
-                      <%- post.description.substring(0, 150) %>
-                        <!-- truncate long posts on blogs page -->
-                      <% if(post.description.length > 150){ %>
-                        ...
-                      <% } %>
+                      <%- post.content.substring(0, 150) %>
+                  
+                        <% if(post.content.length > 150){ %>
+                          ...
+                          <% } %>
                     </p>
+                    <% } %>
                     <p>
                       <small class="post-author text-muted">Posted by <%= post.author.username %></small>
                       <small class="post-date text-muted"><%= post_m + ' ' + post_d + ' ' + post_y %></small>

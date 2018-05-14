@@ -21,10 +21,8 @@ var post_y = post.timeCreated.getFullYear();
   </div>
   <div id="showpost-page">
     <div class="card mb-3">
-      <img class="card-img-top" src="<%= post.image %>" alt="Card image cap">
+      <img class="card-img-top" src="/image/<%= post.image %>" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title"><%= post.title %></h5>
-        <p id="post-content" class="card-text"><%= post.description %></p>
         <% if(post.content != undefined) { %>
           <div class="more-content">
             <%- post.content %>
@@ -49,7 +47,7 @@ var post_y = post.timeCreated.getFullYear();
             <form class="delete-form" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
               <button class="btn btn-outline-danger">Delete</button>
             </form>
-            <a href="/posts/<%= post._id %>/edit" class="edit-btn btn btn-outline-warning">Edit</a>
+            <% /* %> <!-- <a href="/posts/<%= post._id %>/edit" class="edit-btn btn btn-outline-warning">Edit</a> --> <% */ %>
             <% } %>
           </div>
         </div>
