@@ -94,21 +94,38 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
         createdPost.remove();
         return res.redirect("/posts/new");
       }
-      Account.findOne({ username: createdPost.author.username }, (err, foundAccount) => {
-        if (err) {
-          console.log(err);
-          return res.redirect("/posts");
+      gfs.files.findOne({ filename: filename }, (err, file) => {
+        if (file.contentType === 'image/jpeg' || file.contentType === 'image/jpg' || file.contentType === 'image/png') {
+          Account.findOne({ username: createdPost.author.username }, (err, foundAccount) => {
+            if (err) {
+              console.log(err);
+              return res.redirect("/posts");
+            }
+            foundAccount.posts.push(createdPost);
+            foundAccount.save((err, savedAccount) => {
+              if (err) {
+                console.log(err);
+                return res.redirect("/posts");
+              }
+              console.log(savedAccount.username + " posted " + createdPost.title);
+              req.flash("success", "Thank you for adding a new post, " + savedAccount.username);
+              res.redirect("/posts/" + createdPost._id);
+            });
+          });
+        } else {
+          req.flash("error", "File type is invalid. Upload image only.");
+          createdPost.remove();
+          console.log('post removed');
+          gfs.remove({ filename: filename, root: 'uploads' }, (err, gridStore) => {
+            if (err) {
+              console.log(err);
+              return;
+            }
+            console.log('post picture removed');
+            return;
+          });
+          res.redirect("/posts/new");
         }
-        foundAccount.posts.push(createdPost);
-        foundAccount.save((err, savedAccount) => {
-          if (err) {
-            console.log(err);
-            return res.redirect("/posts");
-          }
-          console.log(savedAccount.username + " posted " + createdPost.title);
-          req.flash("success", "Thank you for adding a new post, " + savedAccount.username);
-          res.redirect("/posts/" + createdPost._id);
-        });
       });
     });
   });
@@ -146,28 +163,6 @@ router.post("/:id", middleware.isLoggedIn, (req, res) => {
     });
   });
 });
-// edit post
-// router.get("/:id/edit", middleware.checkPostOwnership, (req, res) => {
-//   Post.findById(req.params.id, (err, foundPost) => {
-//     if(err){
-//       console.log(err);
-//       return res.redirect("/posts/" + req.params.id);
-//     }
-//     res.render("editpost", { post: foundPost });
-//   });
-// });
-// PUT request after edit page
-// router.put("/:id", middleware.checkPostOwnership, (req, res) => {
-//   Post.findByIdAndUpdate(req.params.id, req.body.post, (err, foundPost) => {
-//     if(err){
-//       console.log(err);
-//       return res.redirect("/posts/" + req.params.id);
-//     }
-//     console.log(foundPost.author.username + " edited the post " + foundPost.title);
-//     req.flash("success", "Successfully edited your post.");
-//     res.redirect("/posts/" + req.params.id);
-//   });
-// });
 // DELETE request after clicking delete on a post
 router.delete("/:id", middleware.checkPostOwnership, (req, res) => {
   Post.findById(req.params.id, (err, foundPost) => {
@@ -186,6 +181,7 @@ router.delete("/:id", middleware.checkPostOwnership, (req, res) => {
           console.log(err);
           return res.redirect("/posts/" + req.params.id);
         }
+        console.log(savedAccount.username + " deleted post " + foundPost.title);
         foundPost.remove();
         res.redirect("/posts");
       });

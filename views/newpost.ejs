@@ -1,15 +1,17 @@
 <% include partials/header %>
 
-  <div class="container margin-container">
+  <div class="container">
     <h1 class="text-center">Create Post</h1>
     <hr>
-    <span>Max filesize: 1MB</span>
-    <form class="post-form" action="/posts" method="POST" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="post-img-input">Upload your adventure photo</label>
-        <input type="file" class="form-control-file" name="image" id="post-img-input" required>
-      </div>
-      <button type="submit" class="btn btn-sm ml-auto apply">Apply</button>
-    </form>
+    <div id="create-post">
+      <span>Max filesize: 1MB</span>
+      <form class="post-form" action="/posts" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="post-img-input">Upload your adventure photo</label>
+          <input type="file" class="form-control-file" name="image" id="post-img-input" required>
+        </div>
+        <button type="submit">Apply</button>
+      </form>
+    </div>
   </div>
   <% include partials/footer %>
